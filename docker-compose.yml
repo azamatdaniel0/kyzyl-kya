@@ -1,0 +1,44 @@
+networks:
+  db_network:
+    driver: bridge
+
+services:
+  camera_exit:
+    container_name: Camera_Exit
+    build:
+      context: ./Camera_Exit
+      dockerfile: Dockerfile
+    volumes:
+      - ./Camera_Exit/data:/app/data
+    networks:
+      - db_network
+
+  camera_entrance:
+    container_name: Camera_Entrance
+    build:
+      context: ./Camera_Entrance
+      dockerfile: Dockerfile
+    volumes:
+      - ./Camera_Entrance/data:/app/data
+    networks:
+      - db_network
+
+  camera_checkpoint_entrance:
+    container_name: Camera_Checkpoint_Entrance
+    build:
+      context: ./Camera_Checkpoint_Entrance
+      dockerfile: Dockerfile
+    volumes:
+      - ./Camera_Checkpoint_Entrance/data:/app/data
+    networks:
+      - db_network
+
+  camera_checkpoint_exit:
+    container_name: Camera_Checkpoint_Exit
+    build:
+      context: ./Camera_Checkpoint_Exit
+      dockerfile: Dockerfile
+    volumes:
+      - ./Camera_Checkpoint_Exit/data:/app/data
+    networks:
+      - db_network

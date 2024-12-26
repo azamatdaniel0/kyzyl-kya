@@ -1,0 +1,13 @@
+services:
+  traffic_monitor:
+    build: .
+    container_name: traffic_monitor
+    restart: on-failure
+    volumes:
+      - ./data:/app/data
+    networks:
+      - db_network
+
+networks:
+  db_network:
+    driver: bridge
